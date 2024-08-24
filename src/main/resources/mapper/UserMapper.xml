@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.UserMapper">
+    <insert id="add">
+    insert into user(username,password,create_time,update_time) values(#{username},#{password},now(),now())
+    </insert>
+
+    <select id="findByUserName" resultType="com.example.demo.pojo.User">
+     select * from user where username = #{username}
+    </select>
+
+    <update id="updata">
+        update user set nickname=#{nickname}, email=#{email} ,update_time=#{updateTime} where id=#{id}
+    </update>
+
+    <update id="updataAvatar">
+        update user set user_pic=#{avatarUrl},update_time=now() where id=#{id}
+    </update>
+    <update id="updataPwd">
+        update user set password=#{md5String},update_time=now() where id=#{id}
+    </update>
+</mapper>

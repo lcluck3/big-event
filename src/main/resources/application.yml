@@ -1,0 +1,33 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 1MB
+      max-request-size: 1MB
+  application:
+    name: demo
+  #数据库
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url:  jdbc:mysql://127.0.0.1:3306/big_event?useSSL=false&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&autoReconnect=true
+    username: root
+    password: 123456
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+#sql语句debug
+logging:
+  level:
+    sql: debug
+#mybatis
+mybatis:
+  #指定在哪里的xml文件(默认在src下的)
+  mapper-locations: mapper/*.xml
+  #定义数据源
+  type-aliases-package: com.example.demo.pojo
+  #打印log方便查看sql语句
+  configuration:
+    log-impl: org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl
+    #开启驼峰命名和下划线命名的转换
+    map-underscore-to-camel-case: true
